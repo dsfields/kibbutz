@@ -1,6 +1,6 @@
 {
   "name": "kibbutz",
-  "longName": "Communal gathering of configuration artifacts.",
+  "longName": "Kibbutz Configuration Aggregator",
   "version": "1.0.0",
   "dependencies": {
     "elv": "^1.0.1"
