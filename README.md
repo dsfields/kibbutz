@@ -171,4 +171,3 @@ config.on('error', function(err) {
 The following are known Kibbutz provider implementations.  _If you've created one not listed here, please add it to README.md via pull request in the [GitHub project](https://github.com/dsfields/kibbutz)._
 
   * [`kibbutz-rc`](https://www.npmjs.com/package/kibbutz-rc)
-  * [`kibbutz-consul`](https://www.npmjs.com/package/kibbutz-consul)
