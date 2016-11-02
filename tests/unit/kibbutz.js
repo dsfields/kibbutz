@@ -156,7 +156,7 @@ describe('Kibbutz', () => {
       }, TypeError);
     });
 
-    it('should callback not a function', () => {
+    it('should throw if callback not a function', () => {
       assert.throws(() => {
         config.load([
           {
