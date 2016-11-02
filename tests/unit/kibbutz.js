@@ -5,11 +5,6 @@ const Kibbutz = require('../../lib/kibbutz');
 
 describe('Kibbutz', () => {
   describe('#constructor', () => {
-    it('should throw if options null', () => {
-      assert.throws(() => {
-        const config = new Kibbutz(null);
-      }, TypeError);
-    });
 
     it('should throw if options not an object', () => {
       assert.throws(() => {
@@ -49,6 +44,20 @@ describe('Kibbutz', () => {
       };
       const config = new Kibbutz(options);
       assert.notEqual(config.value, options);
+      done();
+    });
+
+    if ('should set "value" to empty object when not supplied', (done) => {
+      const config = new Kibbutz({});
+      const count = Object.keys(config.value).length;
+      assert.strictEqual(count, 0);
+      done();
+    });
+
+    if ('should set "value" to empty object when options undefined', (done) => {
+      const config = new Kibbutz();
+      const count = Object.keys(config.value).length;
+      assert.strictEqual(count, 0);
       done();
     });
   });

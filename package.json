@@ -3,7 +3,7 @@
   "longName": "Kibbutz Configuration Aggregator",
   "version": "1.0.1",
   "dependencies": {
-    "elv": "^1.0.1"
+    "elv": "^1.0.2"
   },
   "devDependencies": {
     "chai": "~3.5.0",
