@@ -5,12 +5,6 @@ const Kibbutz = require('../../lib/kibbutz');
 
 describe('Kibbutz', () => {
   describe('#constructor', () => {
-    it('should throw if options undefined', () => {
-      assert.throws(() => {
-        const config = new Kibbutz(undefined);
-      }, TypeError);
-    });
-
     it('should throw if options null', () => {
       assert.throws(() => {
         const config = new Kibbutz(null);
