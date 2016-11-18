@@ -92,7 +92,25 @@ console.log(config.value.baz); // qux
 
 ### Methods
 
+#### `Kibbutz.prototype.append(obj0[, objN] | objs)`
+
+Appends an object, or series of objects to the existing `Kibbutz.prototype.value`.
+
+##### Parameters
+
+  * `obj0[, objN]`: a series of objects to merge into the configuration.  At least on is required.
+
+...or...
+
+  * `objs`: an array of objects to merge into the configuration.
+
+##### Returns
+
+The same instance of `Kibbutz`.  This allows multiple method calls to be chained together.
+
 #### `Kibbutz.prototype.load(providers, callback)`
+
+Loads configuration fragments from the given array of `providers`, and merges them together.
 
 ##### Parameters
 
@@ -168,6 +186,6 @@ config.on('error', function(err) {
 
 ## Provider Implementations
 
-The following are known Kibbutz provider implementations.  _If you've created one not listed here, please add it to README.md via pull request in the [GitHub project](https://github.com/dsfields/kibbutz)._
+The following are known Kibbutz provider implementations.  _If you've created one not listed here, please add it to the README.md file via pull request in the [GitHub project](https://github.com/dsfields/kibbutz)._
 
   * [`kibbutz-rc`](https://www.npmjs.com/package/kibbutz-rc)

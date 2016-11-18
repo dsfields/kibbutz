@@ -4,8 +4,8 @@ const assert = require('chai').assert;
 const Kibbutz = require('../../lib/kibbutz');
 
 describe('Kibbutz', () => {
-  describe('#constructor', () => {
 
+  describe('#constructor', () => {
     it('should throw if options not an object', () => {
       assert.throws(() => {
         const config = new Kibbutz(42);
@@ -467,15 +467,15 @@ describe('Kibbutz', () => {
     });
 
     it('should set value property with fully merged config', (done) => {
-      config.load([ provider], (err, conf) => {
+      config.load([ provider ], (err, conf) => {
         assert.strictEqual(config.value.foo, 'bar');
         assert.strictEqual(config.value.baz, 'qux');
         done();
       });
     });
 
-    it('should call callback with undefined for error when successful', (done) => {
-      config.load([ provider], (err, conf) => {
+    it('should call callback with undefined for error on success', (done) => {
+      config.load([ provider ], (err, conf) => {
         assert.strictEqual(err, undefined);
         done();
       });
@@ -488,4 +488,70 @@ describe('Kibbutz', () => {
       });
     });
   });
+
+  describe('#append', () => {
+    let config;
+
+    beforeEach((done) => {
+      config = new Kibbutz({
+        value: { foo: 'bar' }
+      });
+      done();
+    });
+
+    it('should throw if no arguments passed', () => {
+      assert.throws(() => {
+        config.append();
+      }, TypeError);
+    });
+
+    it('should return self', (done) => {
+      const res = config.append({ baz: 'qux' });
+      assert.strictEqual(res, config);
+      done();
+    });
+
+    it('should append value in array', (done) => {
+      config.append([ { baz: 'qux' } ]);
+      assert.strictEqual(config.value.foo, 'bar');
+      assert.strictEqual(config.value.baz, 'qux');
+      done();
+    });
+
+    it('should append multiple values in array', (done) => {
+      config.append([ { baz: 'qux' }, { quux: 'corge' } ]);
+      assert.strictEqual(config.value.foo, 'bar');
+      assert.strictEqual(config.value.baz, 'qux');
+      assert.strictEqual(config.value.quux, 'corge');
+      done();
+    });
+
+    it('should set value to frozen object', (done) => {
+      config.append([ { baz: 'qux' } ]);
+      assert.isFrozen(config.value);
+      done();
+    });
+
+    it('should append value', (done) => {
+      config.append({ baz: 'qux' });
+      assert.strictEqual(config.value.foo, 'bar');
+      assert.strictEqual(config.value.baz, 'qux');
+      done();
+    });
+
+    it('should append multiple argument values', (done) => {
+      config.append({ baz: 'qux' }, { quux: 'corge' });
+      assert.strictEqual(config.value.foo, 'bar');
+      assert.strictEqual(config.value.baz, 'qux');
+      assert.strictEqual(config.value.quux, 'corge');
+      done();
+    });
+
+    it('should set value to frozen object', (done) => {
+      config.append({ baz: 'qux' });
+      assert.isFrozen(config.value);
+      done();
+    });
+  });
+
 });
