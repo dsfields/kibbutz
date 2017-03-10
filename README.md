@@ -67,6 +67,10 @@ console.log(config.value.baz); // qux
 
 ### Properties
 
+#### `Kibbutz.shared`
+
+Gets or sets a globally shared instance of `Kibbutz`.  This value must be `null` or an instance of `Kibbutz`.  The default is `null`.
+
 #### `Kibbutz.prototype.value`
 
 Gets the full configuration object.  This is the merged configuration JSON object from all providers supplied to `Kibbutz.prototype.load()`, and the seed value supplied via options to the constructor.  The object return is immutable, and attempts to modify it will result in an error.

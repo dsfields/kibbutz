@@ -103,6 +103,27 @@ describe('Kibbutz', () => {
     });
   });
 
+  describe('#shared', () => {
+    afterEach(() => {
+      Kibbutz.shared = null;
+    });
+
+    it('should throw if set to not null or instanceof Kibbutz', () => {
+      assert.throws(() => {
+        Kibbutz.shared = 123;
+      });
+    });
+
+    it('should set a global instance of Kibbutz', () => {
+      Kibbutz.shared = new Kibbutz();
+      assert.instanceOf(Kibbutz.shared, Kibbutz);
+    });
+
+    it('should get null if not set', () => {
+      assert.isNull(Kibbutz.shared);
+    });
+  });
+
   describe('#value', () => {
     let config;
 
