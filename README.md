@@ -144,6 +144,18 @@ Providers are run serially by how they are ordered in the `providers` array.  On
 
 Configuration fragments are merged into the base config element managed by `Kibbutz`.  Keys use a first-in-wins strategy, meaning, once a key is set it cannot be set by a different provider.  The exception being objects and arrays.  Objects are deep-merged, and arrays are concatenated.
 
+#### `Kibbutz.prototype.loadAsync(providers)`
+
+Works just like [`Kibbutz.prototype.load()`](#kibbutzprototypeloadproviders-callback), but returns a `Promise`.
+
+##### Parameters
+
+  * `providers`: _(required)_ an array of [providers](#providers) used to load configuration fragments.
+
+##### Returns
+
+The a `Promise` that resolves with the fully merged configuation value.  This is the same as `Kibbutz.prototype.value`.
+
 #### `Kibbutz.prototype.on(eventName, listener)`
 
 `Kibbutz` emits events which can be subscribed to via the `on()` method.  This method functions just like the native Node.js [`EventEmitter.prototype.on()`](https://nodejs.org/api/events.html#events_emitter_on_eventname_listener) method.

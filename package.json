@@ -1,14 +1,20 @@
 {
   "name": "kibbutz",
+  "description": "Configuration loader and aggregator for Node.js applications",
+  "license": "MIT",
   "longName": "Kibbutz Configuration Aggregator",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "dependencies": {
-    "elv": "^1.0.0"
+    "bluebird": "^3.5.1",
+    "elv": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
-    "istanbul": "~0.4.2",
-    "mocha": "~2.4.5"
+    "chai": "^4.1.2",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "mocha": "^5.0.4",
+    "nyc": "^11.6.0"
   },
   "keywords": [
     "config",
@@ -26,7 +32,7 @@
     "url": "https://github.com/dsfields/kibbutz"
   },
   "scripts": {
-    "lint": "eslint ./**/*.js",
-    "test": "NODE_ENV=test istanbul cover _mocha tests/unit/**/*.js"
+    "test": "NODE_ENV=test nyc --reporter=lcov  --reporter=text mocha --recursive ./test",
+    "lint": "eslint ./*"
   }
 }
